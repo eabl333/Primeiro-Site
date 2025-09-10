@@ -1,0 +1,339 @@
+/* =========================
+   style.css - Tema tecnológico
+   ========================= */
+
+/* 1) Reset / base */
+:root{
+    --bg-0: #071428;
+    --bg-1: #0f1f33;
+    --accent-cyan: #00f0ff;
+    --accent-indigo: #7a46ff;
+    --card-bg: rgba(255,255,255,0.03);
+    --muted: rgba(230,247,255,0.8);
+    --glass: rgba(255,255,255,0.04);
+    --success: #7fffd4;
+    --max-width: 1100px;
+    --radius: 12px;
+    --gap: 20px;
+  }
+  
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html,body { height: 100%; }
+  body {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--muted);
+    background:
+      /* raios finos tecnólogicos (diagonais) */
+      repeating-linear-gradient( -20deg,
+        rgba(0,240,255,0.06) 0px, rgba(0,240,255,0.06) 2px,
+        transparent 2px, transparent 60px ),
+      /* raios roxos largos */
+      repeating-linear-gradient( 70deg,
+        rgba(122,70,255,0.04) 0px, rgba(122,70,255,0.04) 3px,
+        transparent 3px, transparent 140px ),
+      /* pontos e glows */
+      radial-gradient(circle at 10% 20%, rgba(0,240,255,0.03), transparent 6%),
+      radial-gradient(circle at 80% 80%, rgba(122,70,255,0.02), transparent 8%),
+      linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 100%);
+    background-blend-mode: screen, screen, overlay, overlay, normal;
+    min-height: 100vh;
+    line-height: 1.45;
+    overflow-x: hidden;
+    padding: 20px;
+  }
+  
+  /* ===== page container ===== */
+  .container {
+    width: min(95%, var(--max-width));
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* skip-link acessível */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .skip-link:focus {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    background: #000;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    z-index: 9999;
+    width: auto;
+    height: auto;
+  }
+  
+  /* ===== Header / Nav ===== */
+  header { margin-bottom: 28px; }
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap);
+    padding: 14px 0;
+    position: relative;
+  }
+  
+  .logo {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: white;
+  }
+  .logo span {
+    color: var(--accent-cyan);
+    display: inline-block;
+    margin-left: 6px;
+    font-weight: 800;
+  }
+  
+  /* nav links */
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all .18s ease;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .nav-links a:hover,
+  .nav-links a:focus {
+    background: linear-gradient(90deg, rgba(0,240,255,0.06), rgba(122,70,255,0.04));
+    color: #fff;
+    transform: translateY(-1px);
+  }
+  
+  /* small button variant */
+  .btn {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-indigo));
+    color: #001;
+    padding: 10px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 6px 18px rgba(2,8,20,0.45);
+  }
+  .btn-sm {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+  
+  /* ===== HERO ===== */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    align-items: center;
+    padding: 28px 0;
+  }
+  
+  .hero-text h2 {
+    font-size: 20px;
+    color: #eaf6ff;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .hero-text .btn { margin-top: 10px; }
+  
+  /* hero media */
+  .hero-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-media img {
+    width: 100%;
+    height: auto;
+    max-width: 820px;
+    border-radius: 14px;
+    box-shadow: 0 14px 40px rgba(2,8,20,0.6);
+    border: 1px solid rgba(255,255,255,0.03);
+    display: block;
+  }
+  
+  /* larger screens: two columns */
+  @media(min-width: 880px){
+    .hero { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .hero-text h2 { font-size: 22px; }
+  }
+  
+  /* ===== Sections / features ===== */
+  .section { padding: 30px 0; }
+  .section-header h2 {
+    color: var(--accent-cyan);
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .section-header h1 {
+    color: #fff;
+    font-size: 20px;
+    line-height: 1.25;
+    margin-bottom: 18px;
+  }
+  
+  /* grid for cards */
+  .grid-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 8px 20px rgba(2,8,20,0.5);
+  }
+  .card h2 { color: var(--accent-cyan); margin-bottom: 8px; font-size: 16px; }
+  .card h1 { color: white; font-size: 15px; font-weight: 600; }
+  
+  /* grid columns on wider screens */
+  @media(min-width: 760px){
+    .grid-1 { grid-template-columns: repeat(3, 1fr); }
+  }
+  
+  /* ===== CONTATO (formulário) ===== */
+  section#contato { padding-top: 12px; }
+  
+  /* basic form container so fields don't stretch too wide */
+  form {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 18px;
+    border: 1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 10px 30px rgba(2,8,20,0.45);
+    margin-top: 14px;
+  }
+  
+  /* support both IDs used in your project */
+  #contact-form, #form-contato { display: block; }
+  
+  /* field styles */
+  label {
+    display: block;
+    font-weight: 700;
+    color: rgba(230,247,255,0.95);
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.02);
+    color: #e6f7ff;
+    font-size: 15px;
+    margin-bottom: 14px;
+    transition: all .18s ease;
+    resize: vertical;
+    min-height: 44px;
+  }
+  
+  /* placeholder */
+  input::placeholder, textarea::placeholder {
+    color: rgba(230,247,255,0.5);
+  }
+  
+  /* foco */
+  input:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0,240,255,0.06);
+    border-color: var(--accent-cyan);
+    background: rgba(255,255,255,0.03);
+  }
+  
+  /* ajustar textarea */
+  textarea { min-height: 120px; line-height: 1.4; }
+  
+  /* group for status messages (JS usa #status) */
+  #status {
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--success);
+  }
+  
+  /* botão enviar (também estiliza .btn dentro do formulário) */
+  form button, button[type="submit"] {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 16px;
+    font-weight: 800;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 6px;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-indigo));
+    color: #001;
+    box-shadow: 0 12px 30px rgba(2,8,20,0.6);
+    transition: transform .16s ease, box-shadow .16s ease;
+  }
+  form button:hover, form button:focus {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(2,8,20,0.7);
+    color: #fff;
+  }
+  
+  /* small error text class used by validator (se for usado) */
+  .erro {
+    color: #ff9a9a;
+    font-size: 13px;
+    margin-top: -8px;
+    margin-bottom: 10px;
+  }
+  
+  /* ===== Footer ===== */
+  .site-footer {
+    margin-top: 30px;
+    padding: 18px 0;
+    border-top: 1px solid rgba(255,255,255,0.03);
+    text-align: center;
+  }
+  .site-footer a { color: var(--accent-cyan); text-decoration: none; font-weight: 700; }
+  
+  /* ===== Pequenas melhorias de acessibilidade e UX ===== */
+  a:focus, button:focus, input:focus, textarea:focus {
+    outline: 3px solid rgba(0,240,255,0.06);
+    outline-offset: 2px;
+  }
+  
+  /* ===== Ajustes mobile ===== */
+  @media(max-width: 600px){
+    .navbar { gap: 10px; padding: 8px 0; }
+    .nav-links { gap: 8px; font-size: 14px; }
+    .logo { font-size: 18px; }
+    .hero-text h2 { font-size: 18px; }
+    .hero-media img { max-height: 320px; object-fit: cover; }
+    form { padding: 14px; }
+    .card h1 { font-size: 14px; }
+  }
+  
+  /* ===== Utilities ===== */
+  .text-muted { color: rgba(230,247,255,0.6); }
+  .center { text-align: center; }
+  .small { font-size: 13px; color: rgba(230,247,255,0.6); }
+  
